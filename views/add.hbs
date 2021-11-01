@@ -1,0 +1,48 @@
+<h3 class='add__title pt-1'>Ваши знания станут проводником в мире возможностей и
+  достигнут миллионов.</h3>
+<h5>Добавить новый курс</h5>
+{{#if error}}
+  <div class='alert alert-danger'>{{error}}</div>
+{{/if}}
+<form action='/add' method='POST' class='pt-1'>
+  <div class='input-field'>
+    <input
+      id='title'
+      name='title'
+      type='text'
+      class='validate'
+      value='{{data.title}}'
+      required
+    />
+    <span class='helper-text' data-error='Введите название курса'></span>
+    <label for='title'>Название курса</label>
+  </div>
+  <div class='input-field'>
+    <input
+      id='price'
+      name='price'
+      type='text'
+      class='validate'
+      value='{{data.price}}'
+      required
+    />
+    <span class='helper-text' data-error='Введите цену'></span>
+    <label for='price'>Введите цену</label>
+  </div>
+  <input type='hidden' name='_csrf' value='{{@root.csrf}}' />
+  <div class='input-field'>
+    <input
+      id='img'
+      name='img'
+      type='text'
+      class='validate'
+      value='{{data.img}}'
+      required
+    />
+    <span class='helper-text' data-error='Введите url картинки'></span>
+    <label for='img'>Введите url картинки</label>
+  </div>
+  <button class='btn waves-effect waves-light' type='submit'>Добавить
+    <i class='material-icons right'>send</i>
+  </button>
+</form>

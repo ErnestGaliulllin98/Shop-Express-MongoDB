@@ -1,0 +1,27 @@
+<nav>
+  <div class='nav-wrapper'>
+    <a href='/' class='brand-logo'>Магазин</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul id='nav-mobile' class='right hide-on-med-and-down'>
+      <li {{#if isHome}}class='active'{{/if}}><a href='/'>Главная</a></li>
+      <li {{#if isCourses}}class='active'{{/if}}><a href='/courses'>Курсы</a></li>
+      {{#if isAuth}}
+      <li {{#if isAdd}}class='active'{{/if}}><a href='/add'>Добавить новый курс</a></li>
+      <li {{#if isOrders}}class='active'{{/if}}><a href='/orders'>Заказы</a></li>
+      <li {{#if isCart}}class='active'{{/if}}><a href='/cart'><i class="material-icons">shopping_cart</i></a></li>
+      <li {{#if isProfile}}class='active'{{/if}}><a href='/profile'><i class="material-icons">account_circle</i></a></li>
+      {{else}}
+        <li {{#if isLogin}}class='active'{{/if}}><a href='/auth/login#login'>Войти</a></li>
+      {{/if}}
+        <li>
+          <div class="switch" id="switch">
+            <span class="switch-thumb round"></span>
+          </div>
+        </li>
+      {{#if isAuth}}
+        <li {{#if isInfo}}class='active'{{/if}} ><a href="/info"><i class="material-icons">info</i></a></li>
+        <li ><a href='/auth/logout'>Выйти</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>

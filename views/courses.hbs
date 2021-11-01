@@ -1,0 +1,34 @@
+<h1>Страница курсов</h1>
+<h4 class="italic">Если у тебя есть что дать людям, <br> в этом мире нет ничего такого<br> чего ты бы не мог достичь</h4>
+{{#if courses.length}}
+<div class='row'>
+  {{#each courses}}
+      <div class='col s6 offset-s3'>
+        <div class='card'>
+          <div class='card-image'>
+            <img src={{img}} alt={{title}} />
+          </div>
+          <div class='card-content'>
+            <span class='card-title'>{{title}}</span>
+            <p class='price'>{{price}}</p>
+          </div>
+          <div class='card-action action'>
+            <a href='/courses/{{id}}' target='_blank'>Открыть курс</a>
+          {{#if @root.isAuth}}
+            {{#ifeq userId._id @root.userId}}
+            <a href='/courses/{{id}}/edit?allow=true'>Редактировать</a>
+            {{/ifeq}}
+            <form action='/cart/add' method='POST'>
+              <input type='hidden' name='id' value='{{id}}' />
+              <input type='hidden' name='_csrf' value='{{@root.csrf}}' />
+              <button class='btn btn-primary' type='submit'>Купить</button>
+            </form>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+  {{/each}}
+</div>
+{{else}}
+  <p>Курсов нет</p>
+{{/if}}

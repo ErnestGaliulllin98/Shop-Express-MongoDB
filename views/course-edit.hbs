@@ -1,0 +1,55 @@
+<div id='course-edit'>
+  <h1>Редактировать курс {{course.title}}</h1>
+  {{#if error}}
+    <div class='alert alert-danger'>{{error}}</div>
+  {{/if}}
+  <form action='/courses/edit' method='POST'>
+    <div class='input-field'>
+      <input
+        id='title'
+        name='title'
+        type='text'
+        class='validate'
+        value='{{course.title}}'
+        required
+      />
+      <span class='helper-text' data-error='Введите название курса'></span>
+      <label for='title'>Название курса</label>
+    </div>
+    <div class='input-field'>
+      <input
+        id='price'
+        name='price'
+        type='text'
+        class='validate'
+        value='{{course.price}}'
+        required
+      />
+      <span class='helper-text' data-error='Введите цену'></span>
+      <label for='price'>Введите цену</label>
+    </div>
+    <div class='input-field'>
+      <input
+        id='img'
+        name='img'
+        type='text'
+        class='validate'
+        value='{{course.img}}'
+        required
+      />
+      <span class='helper-text' data-error='Введите url картинки'></span>
+      <label for='img'>Введите url картинки</label>
+    </div>
+    <input type='hidden' name='_csrf' value='{{@root.csrf}}' />
+    <input type='hidden' name='id' value={{course.id}} />
+    <button type='submit' class='btn waves-effect waves-light'>
+      Редактировать курс
+      <i class='material-icons right'>send</i>
+    </button>
+  </form>
+  <form action='/courses/remove' method='POST'>
+    <input type='hidden' name='_csrf' value='{{@root.csrf}}' />
+    <input type='hidden' name='id' value='{{course.id}}' />
+    <button type='submit' class='btn red js-remove'>Удалить</button>
+  </form>
+</div>
