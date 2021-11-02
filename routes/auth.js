@@ -156,7 +156,7 @@ router.post('/reset', (req, res) => {
         await candidate.save()
         req.flash(
           'success',
-          'Ваш на почту отправлено письмо с инструкцией по восстановлению пароля'
+          'Вам на почту отправлено письмо с инструкцией по восстановлению пароля'
         )
         res.redirect('/auth/login')
         await transporter.sendMail(resetEmail(candidate.email, token))
