@@ -122,7 +122,7 @@ router.post('/password', async (req, res) => {
       user.resetToken = undefined
       user.resetTokenExp = undefined
       await user.save()
-      req.flash('success', 'Вы успешно сбросили пароль')
+      req.flash('success', 'Вы успешно сменили пароль')
       res.redirect('/auth/login')
     } else {
       req.flash('loginError', 'Время жизни вашего токена истекло')
